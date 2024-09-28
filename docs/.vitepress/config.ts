@@ -1,14 +1,12 @@
-import { basename } from 'node:path'
 import { defineConfig } from 'vitepress'
 import MarkdownPreview from 'vite-plugin-markdown-preview'
 
 import { head, nav, sidebar, algolia } from './configs'
 
-const APP_BASE_PATH = basename(process.env.APP_BASE_PATH || '')
 
 export default defineConfig({
   outDir: '../dist',
-  base: APP_BASE_PATH ? `/${APP_BASE_PATH}/` : '/',
+base: '/personal-blog/',
 
   lang: 'zh-CN',
   title: '暮春拾忆',
