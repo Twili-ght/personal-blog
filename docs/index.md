@@ -5,7 +5,7 @@ layoutClass: 'm-home-layout'
 hero:
   name: 暮春拾忆
   text: 吾辈当自强,重铸前端荣光
-  tagline: 知识是进步的阶梯，争取每天都有知识点更新
+  tagline: 知识是进步的阶梯,争取每天都有知识点更新
   image:
     src: /logo.png
     alt: 暮春拾忆
