@@ -11,7 +11,7 @@ export const head: HeadConfig[] = [
   ['meta', { name: 'baidu-site-verification', content: 'codeva-Whjnr38WFE' }],
   ['link', { rel: 'apple-touch-icon', href: '/personal-blog/logo.png' }],
   ['link', { rel: 'mask-icon', href: '/personal-blog/logo.png', color: '#3eaf7c' }],
-  ['link', { rel: 'manifest', href: '/manifest.webmanifest' }],
+  ['link', { rel: 'manifest', href: '/personal-blog/manifest.webmanifest' }],
   [
     'script',
     { src: isDevelopment ? '' : 'https://hm.baidu.com/hm.js?8092fab2f2adfc7938ba5b8885aef5b4' },
