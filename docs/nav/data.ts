@@ -58,6 +58,12 @@ export const NAV_DATA: NavData[] = [
         desc: '手绘风格流程图',
         link: 'https://excalidraw.com',
       },
+      {
+        icon: 'https://qwerty.fe-mm.com/apple-touch-icon.png',
+        title: 'Qwerty Learner',
+        desc: '为键盘工作者设计的单词记忆与英语肌肉记忆锻炼软件',
+        link: 'https://qwerty.fe-mm.com',
+      },
     ],
   },
   {
@@ -168,35 +174,6 @@ export const NAV_DATA: NavData[] = [
         icon: 'https://stablediffusionweb.com/favicon.ico',
         title: 'Stable Diffusion',
         link: 'https://stablediffusionweb.com',
-      },
-    ],
-  },
-  {
-    title: '茂茂的站点导航',
-    items: [
-      {
-        icon: '/logo.png',
-        title: '前端日常笔记',
-        desc: '日常笔记记录（零零散散啥都记系列）',
-        link: 'https://github.com/maomao1996/daily-notes',
-      },
-      {
-        icon: '/logo.png',
-        title: '前端思维导图',
-        desc: '用思维导图的方式总结个人所学知识',
-        link: 'https://mindmap.fe-mm.com',
-      },
-      {
-        icon: 'https://qwerty.fe-mm.com/apple-touch-icon.png',
-        title: 'Qwerty Learner',
-        desc: '为键盘工作者设计的单词记忆与英语肌肉记忆锻炼软件',
-        link: 'https://qwerty.fe-mm.com',
-      },
-      {
-        icon: '/logo.png',
-        title: 'mmPlayer',
-        desc: 'mmPlayer 在线音乐播放器',
-        link: 'https://netease-music.fe-mm.com',
       },
     ],
   },
@@ -357,6 +334,12 @@ export const NAV_DATA: NavData[] = [
         title: 'NutUI',
         desc: '京东风格的轻量级移动端组件库',
         link: 'https://nutui.jd.com',
+      },
+      {
+        icon: 'https://static.vue-js.com/6280b990-ff19-11ea-85f6-6fac77c0c9b3.png',
+        title: 'vue社区',
+        desc: '多种优秀的vue开源项目',
+        link: 'https://vue3js.cn/',
       },
     ],
   },
