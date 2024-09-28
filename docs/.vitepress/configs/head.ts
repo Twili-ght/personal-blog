@@ -10,7 +10,7 @@ export const head: HeadConfig[] = [
   ['meta', { name: 'msapplication-TileImage', content: '/personal-blog/logo.png' }],
   ['meta', { name: 'baidu-site-verification', content: 'codeva-Whjnr38WFE' }],
   ['link', { rel: 'apple-touch-icon', href: '/personal-blog/logo.png' }],
-  ['link', { rel: 'mask-icon', href: '/personal-blog/logo.png', color: '#3eaf7c' }],
+  ['link', { rel: 'mask-icon', href: '/personal-blog/docs/public/favicon.ico', color: '#3eaf7c' }],
   ['link', { rel: 'manifest', href: '/personal-blog/manifest.webmanifest' }],
   [
     'script',
