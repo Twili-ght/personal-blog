@@ -1,4 +1,4 @@
-# css函数
+# css 函数
 
 ![CSS 函数](./images/css.jpg)
 
@@ -9,15 +9,19 @@
 类似 `JS` 中的 `Math.min()`
 
 示例
-```` css
+
+```css
 width: min(50vw, 500px);
-````
+```
+
 表示元素最大宽为 `500px`，即：小屏设备上宽度为 `window` 的一半，但在小屏设备上，不超过 `500px`
 
 ## max()
+
 计算表达式的值中最大的值作为参数值，用法和 `min` 一致
 
 ## clamp()
+
 返回一个区间范围的值
 
 语法: `clamp(MIN, VAL, MAX)，MIN` 表示最小值，`VAL` 表示首选值，`MAX`表示最大值，即 `VAL` 在 `MIN MAX` 之间就用` VAL`，比` MIN` 小就用 `MIN` ，比` MAX` 大就用 `MAX`
@@ -25,6 +29,7 @@ width: min(50vw, 500px);
 等同于 `max(MIN, min(VAL, MAX))`
 
 ## 组合使用
+
 `min() max() clamp()` 这三哥们都是比较新的属性，兼容性都不咋地，仅用于个人玩
 
 ![组合 使用](./images/css2.png)
@@ -76,12 +81,13 @@ width: min(50vw, 500px);
 
 [demo](https://codesandbox.io/p/sandbox/new-field-romhy)
 
-
 ## 顺便总结了下 CSS 的函数
 
 ### 数学函数
+
 - **[min()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/min)计算表达式的值中最小的值作为参数值**
   - `width: min(50vw, 500px);`
+
 * [max()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/max) 计算表达式的值中最大的值作为参数值
   - `width: max(50vw, 500px);`
 * [clamp()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/clamp) 返回一个区间范围的值
@@ -91,22 +97,26 @@ width: min(50vw, 500px);
 * [minmax()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/minmax) 在 `gird` 布局中使用，定义了一个长宽范围的闭区间
 * [repeat()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/repeat) 在 `gird` 布局中使用，表示轨道列表的重复片段
 * [attr()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/attr) 获取选择到的元素的某一 HTML 属性值
- 
+
   - `a:before { content:attr(data-name); }`
 
 ## 颜色函数
 
-- **[rgb()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value#rgb()) 使用红-绿-蓝（red-green-blue (RGB)）定义颜色**
+- **[rgb()](<https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value#rgb()>) 使用红-绿-蓝（red-green-blue (RGB)）定义颜色**
   - `color: rgb(123, 123, 123);`
+
 * [rgba()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value#rgba) 在 rgb 的基础上增加了阿尔法通道（A）
   - `color: rgba(123, 123, 123, 0.23);`
 * [hsl()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value#hsl) 使用色相-饱和度-明度（Hue-saturation-lightness）定义颜色
   - `color: hsl(120, 100%, 75%);`
-* [hsla()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value#hsla()) 在 hsl 的基础上增加了阿尔法通道（A）
+* [hsla()](<https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value#hsla()>) 在 hsl 的基础上增加了阿尔法通道（A）
   - `color: hsla(120, 100%, 75%, 0.5);`
+
 ## 背景图函数
+
 - **[url()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_value) 指向一个资源**
   - `background: url('img.png');`
+
 * [linear-gradient()](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient) 创建一个线性渐变
   - `background-image: linear-gradient(45deg, blue, red);`
   - `background-image: linear-gradient(to left top, blue, red);`
@@ -119,4 +129,4 @@ width: min(50vw, 500px);
 
 ## 动画缓动函数
 
-* [cubic-bezier()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/easing-function) 定义了一个贝塞尔曲线(Cubic Bezier)
+- [cubic-bezier()](https://developer.mozilla.org/zh-CN/docs/Web/CSS/easing-function) 定义了一个贝塞尔曲线(Cubic Bezier)

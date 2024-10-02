@@ -71,7 +71,7 @@ export const nav: DefaultTheme.Config['nav'] = [
   {
     text: '笔记',
     items: [
-      { text: '日常笔记', link: '/daily-notes/', activeMatch: '^/daily-notes' },
+      { text: '日常笔记', link: '/daily-notes/css', activeMatch: '^/daily-notes/' },
       {
         items: [
           { text: '踩坑记录', link: '/pit/npm' },

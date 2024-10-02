@@ -3,10 +3,9 @@ import MarkdownPreview from 'vite-plugin-markdown-preview'
 
 import { head, nav, sidebar, algolia } from './configs'
 
-
 export default defineConfig({
   outDir: '../dist',
-base: '/personal-blog/',
+  base: '/personal-blog/',
 
   lang: 'zh-CN',
   title: '暮春拾忆',

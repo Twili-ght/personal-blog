@@ -3686,7 +3686,7 @@ snapshots:
       - fuse.js
       - idb-keyval
       - jwt-decode
-      - less
+      - less.md
       - lightningcss
       - nprogress
       - qrcode

@@ -177,7 +177,12 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
     {
       text: '2024年',
       collapsed: false,
-      items: [{ text: 'css函数', link: '/daily-notes/' }],
+      items: [
+        { text: 'css函数', link: '/daily-notes/css' },
+        { text: 'pm2', link: '/daily-notes/pm2' },
+        { text: 'git', link: '/daily-notes/git' },
+        { text: 'less', link: '/daily-notes/less' },
+      ],
     },
   ],
   '/daily-notes': sidebarDailyNotes,
