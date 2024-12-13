@@ -1,12 +1,16 @@
 import { defineConfig } from 'vitepress'
 import MarkdownPreview from 'vite-plugin-markdown-preview'
 
-import { head, nav, sidebar, algolia } from './configs'
+import { head, nav, sidebar } from './configs'
 
 export default defineConfig({
   outDir: '../dist',
-  base: '/personal-blog/',
-
+  /**
+   * 上线到nginx时 base的路径为'/'
+   * 本base为上线到githubPage的base路径
+   */
+  // base: '/personal-blog/',
+  base: '/',
   lang: 'zh-CN',
   title: '暮春拾忆',
   description: '',
@@ -69,16 +73,10 @@ export default defineConfig({
     visitor: {
       badgeId: 'mamma',
     },
-
-    // comment: {
-    //   repo: 'maomao1996/mm-note',
-    //   repoId: 'MDEwOlJlcG9zaXRvcnkxNTc0ODc5Mjg=',
-    //   category: 'Announcements',
-    //   categoryId: 'DIC_kwDOCWMTOM4CZ2rf',
-    // },
   },
 
   vite: {
     plugins: [MarkdownPreview()],
+    publicDir: './public/',
   },
 })

@@ -9,9 +9,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development vitepress dev docs --port=8733",
     "build:docs": "vitepress build docs",
-    "preview": "vitepress preview docs --port 8730",
-    "lint": "prettier --write .",
-    "prepare": "husky install"
+    "preview": "vitepress preview docs --port 8730"
   },
   "devDependencies": {
     "@femm/prettier": "^1.1.0",

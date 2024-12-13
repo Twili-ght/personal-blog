@@ -182,6 +182,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = {
         { text: 'pm2', link: '/daily-notes/pm2' },
         { text: 'git', link: '/daily-notes/git' },
         { text: 'less', link: '/daily-notes/less' },
+        { text: 'Linux', link: '/daily-notes/Linux' },
+        { text: 'Nginx', link: '/daily-notes/Nginx' },
       ],
     },
   ],
