@@ -9,8 +9,8 @@ export default defineConfig({
    * 上线到nginx时 base的路径为'/'
    * 本base为上线到githubPage的base路径
    */
-  // base: '/personal-blog/',
-  base: '/',
+  base: '/personal-blog/',
+  // base: '/',
   lang: 'zh-CN',
   title: '暮春拾忆',
   description: '',
