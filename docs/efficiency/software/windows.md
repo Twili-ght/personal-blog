@@ -264,3 +264,11 @@ irm https://get.activated.win | iex
 4. 免费无广告支持免安装使用
 
 [软件官网](https://www.diskanalyzer.com)
+
+## windos电脑有网网页无网问题
+1. 检查网络连接是否正常
+2. 检查浏览器是否设置了代理
+3. 刷新DNS缓存
+   - 打开命令提示符（管理员权限）
+   - 输入 `ipconfig /flushdns` 并按下 Enter 键
+
