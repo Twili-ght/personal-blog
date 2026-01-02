@@ -1,4 +1,4 @@
-name: Deploy VitePress site to Pages
+name: Deploy VitePress site to GitHub Pages
 
 on:
   push:
@@ -10,38 +10,51 @@ permissions:
   pages: write
   id-token: write
 
+# 允许同时只运行一个部署，避免队列堆积
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      # 拉取仓库
+      - name: Checkout repository
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
-      - name: Setup Node
+      # 安装 Node
+      - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 24
-          cache: pnpm
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      # 安装 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
+      # 清理旧的构建产物
+      - name: Clear previous build
+        run: rm -rf docs/.vitepress/dist
 
+      # 安装依赖
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Build with VitePress
+      # 构建 VitePress
+      - name: Build VitePress site
         run: pnpm run build:docs
 
-      - name: Upload artifact
+      # 配置 GitHub Pages
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      # 上传构建产物
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
@@ -50,9 +63,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+      # 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
+      # 打印访问 URL
       - name: Show deployed URL
         run: echo "Your site is live at ${{ steps.deployment.outputs.page_url }}"
