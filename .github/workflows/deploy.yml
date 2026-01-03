@@ -23,13 +23,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # ❗ 不要 cache: pnpm
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
 
-      # ⭐ 核心：启用 corepack（读取 packageManager: pnpm@9.6.0）
       - name: Enable Corepack
         run: |
           corepack enable
@@ -42,11 +40,11 @@ jobs:
       - name: Build VitePress
         run: pnpm exec vitepress build docs
 
-      # ⚠️ 你的 outDir = ../dist
+      # ⭐ 关键修正点在这里
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/dist
+          path: dist
 
   deploy:
     runs-on: ubuntu-latest
