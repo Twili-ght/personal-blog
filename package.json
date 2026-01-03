@@ -7,7 +7,7 @@
   "description": "Development related notes",
   "license": "MIT",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development vitepress dev docs --port=8733",
+    "dev": "cross-env NODE_ENV=development vitepress dev docs --port=8733 --open",
     "build:docs": "vitepress build docs",
     "preview": "vitepress preview docs --port 8730"
   },
