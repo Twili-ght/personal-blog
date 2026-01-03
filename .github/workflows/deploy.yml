@@ -1,6 +1,5 @@
 name: Deploy VitePress to GitHub Pages
 
-# 触发条件：推送到 main 分支
 on:
   push:
     branches:
@@ -12,13 +11,13 @@ jobs:
     permissions:
       contents: read
       pages: write
-      id-token: write      # deploy-pages@v1 需要 OIDC token
+      id-token: write
     steps:
-      # 1️⃣ 检出代码
+      # 1️⃣ Checkout 仓库
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️⃣ 设置 Node.js
+      # 2️⃣ 安装 Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
@@ -28,15 +27,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # 4️⃣ 构建 VitePress 网站
+      # 4️⃣ 构建 VitePress
       - name: Build VitePress site
         run: npx vitepress build docs
 
-      # 5️⃣ 检查构建产物
+      # 5️⃣ 检查构建目录是否生成
       - name: Check build output
         run: |
-          echo "Listing root dist folder:"
-          ls -al ../dist || echo "../dist does not exist!"
+          echo "Listing docs folder:"
+          ls -al docs
+          echo "Listing docs/dist folder:"
+          ls -al docs/dist || echo "docs/dist does not exist!"
 
       # 6️⃣ 上传 artifact
       - name: Upload Pages artifact
