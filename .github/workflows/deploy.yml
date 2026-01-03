@@ -4,62 +4,35 @@ on:
   push:
     branches:
       - main
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: pages
-  cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
-      # 1️⃣ 拉取仓库代码
-      - name: Checkout
-        uses: actions/checkout@v4
+      # 1️⃣ 获取代码
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
       # 2️⃣ 安装 Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 20
 
-      # 3️⃣ 启用 Corepack（自动安装 pnpm@9.6.0）
-      - name: Enable Corepack
-        run: |
-          corepack enable
-          corepack prepare pnpm@9.6.0 --activate
-          pnpm --version
-
-      # 4️⃣ 安装依赖
+      # 3️⃣ 安装依赖
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: npm ci
 
-      # 5️⃣ 构建 VitePress
-      - name: Build VitePress
-        run: pnpm exec vitepress build docs
+      # 4️⃣ 构建 VitePress 网站
+      - name: Build VitePress site
+        run: npx vitepress build docs
 
-      # 6️⃣ 上传构建产物到 GitHub Pages
-      # 🔑 注意：你的 outDir 是 ../dist，所以实际输出在仓库根目录的 dist/
+      # 5️⃣ 上传构建产物
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: docs/dist
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
+      # 6️⃣ 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v1
