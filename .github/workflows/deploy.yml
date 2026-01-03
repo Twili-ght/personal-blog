@@ -23,15 +23,18 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      # ❗ 不要 cache: pnpm
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: pnpm
 
-      # ⭐ 关键：启用 corepack，自动安装 pnpm@9.6.0
+      # ⭐ 核心：启用 corepack（读取 packageManager: pnpm@9.6.0）
       - name: Enable Corepack
-        run: corepack enable
+        run: |
+          corepack enable
+          corepack prepare pnpm@9.6.0 --activate
+          pnpm --version
 
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
@@ -39,7 +42,7 @@ jobs:
       - name: Build VitePress
         run: pnpm exec vitepress build docs
 
-      # ⚠️ 你的 outDir = ../dist → 实际输出在 docs/dist
+      # ⚠️ 你的 outDir = ../dist
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
