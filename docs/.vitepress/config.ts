@@ -4,7 +4,7 @@ import MarkdownPreview from 'vite-plugin-markdown-preview'
 import { head, nav, sidebar } from './configs'
 
 export default defineConfig({
-  outDir: '../dist',
+  // outDir: '../dist',
   /**
    * 上线到nginx时 base的路径为'/'
    * 本base为上线到githubPage的base路径

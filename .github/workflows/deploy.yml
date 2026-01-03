@@ -42,7 +42,7 @@ jobs:
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ../dist   # 对应 outDir: '../dist'
+          path: docs/dist
 
       # 7️⃣ 部署到 GitHub Pages
       - name: Deploy to GitHub Pages
