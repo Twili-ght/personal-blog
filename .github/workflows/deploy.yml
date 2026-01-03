@@ -10,7 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-# 允许同时只运行一个部署，自动取消旧的队列
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -19,41 +18,37 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 1️⃣ 拉取仓库
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
 
-      # 2️⃣ 安装 Node.js
-      - name: Setup Node.js
+      - name: Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: 24
 
-      # 3️⃣ 安装 pnpm（官方 Action，自动加到 PATH）
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
-        # 不指定版本，让它自动匹配 package.json 的 pnpm@9.6.0
 
-      # 4️⃣ 清理旧构建
-      - name: Clear previous build
-        run: rm -rf docs/.vitepress/dist
-
-      # 5️⃣ 安装依赖（兼容 patchedDependencies）
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
 
-      # 6️⃣ 构建 VitePress
-      - name: Build VitePress site
+      - name: Build VitePress
         run: pnpm run build:docs
 
-      # 7️⃣ 配置 GitHub Pages
-      - name: Setup GitHub Pages
+      # 🔥 关键诊断步骤
+      - name: Verify build output
+        run: |
+          echo "=== docs ==="
+          ls -la docs
+          echo "=== .vitepress ==="
+          ls -la docs/.vitepress
+          echo "=== dist ==="
+          ls -la docs/.vitepress/dist
+
+      - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      # 8️⃣ 上传构建产物
-      - name: Upload Pages artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: docs/.vitepress/dist
@@ -62,11 +57,5 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      # 部署到 GitHub Pages
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - name: Deploy
         uses: actions/deploy-pages@v4
-
-      # 打印访问 URL
-      - name: Show deployed URL
-        run: echo "Your site is live at ${{ steps.deployment.outputs.page_url }}"
