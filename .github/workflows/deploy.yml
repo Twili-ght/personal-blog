@@ -10,7 +10,7 @@ permissions:
   pages: write
   id-token: write
 
-# 允许同时只运行一个部署，避免队列堆积
+# 允许同时只运行一个部署，自动取消旧的队列
 concurrency:
   group: pages
   cancel-in-progress: true
@@ -19,39 +19,40 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      # 拉取仓库
+      # 1️⃣ 拉取仓库
       - name: Checkout repository
         uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
-      # 安装 Node
+      # 2️⃣ 安装 Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
           node-version: 24
 
-      # 安装 pnpm
+      # 3️⃣ 安装 pnpm（官方 Action，自动加到 PATH）
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
+        # 不指定版本，让它自动匹配 package.json 的 pnpm@9.6.0
 
-      # 清理旧的构建产物
+      # 4️⃣ 清理旧构建
       - name: Clear previous build
         run: rm -rf docs/.vitepress/dist
 
-      # 安装依赖
+      # 5️⃣ 安装依赖（兼容 patchedDependencies）
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
-      # 构建 VitePress
+      # 6️⃣ 构建 VitePress
       - name: Build VitePress site
         run: pnpm run build:docs
 
-      # 配置 GitHub Pages
+      # 7️⃣ 配置 GitHub Pages
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
 
-      # 上传构建产物
+      # 8️⃣ 上传构建产物
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
